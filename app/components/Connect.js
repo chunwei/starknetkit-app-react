@@ -11,7 +11,14 @@ function Connect() {
 
   useEffect(() => {
     const connectToStarknet = async() => {
-        const connection = await connect( { modalMode: "neverAsk", webWalletUrl: "https://web.argent.xyz" } )
+        const connection = await connect({
+          modalMode: 'neverAsk',
+          webWalletUrl: 'https://web.argent.xyz',
+          argentMobileOptions: {
+            projectId: '25a2434c0acd0dd7b8e25e76c44cf3e3',
+            dappName: 'Element Market'
+          }
+        })
 
         if (connection && connection.isConnected) {
             setConnection(connection)
@@ -23,7 +30,13 @@ function Connect() {
   }, [])
 
   const connectWallet = async() => {
-    const connection = await connect( { webWalletUrl: "https://web.argent.xyz" } )
+    const connection = await connect({
+      webWalletUrl: 'https://web.argent.xyz',
+      argentMobileOptions: {
+        projectId: '25a2434c0acd0dd7b8e25e76c44cf3e3',
+        dappName: 'Element Market'
+      }
+    })
 
     if(connection && connection.isConnected) {
         setConnection(connection)
